@@ -35,9 +35,7 @@ git clonehttps://github.com/Lucas-Masaba/to_do_list.git
 - LinkedIn: [LinkedIn](https://linkedin.com/in/khusiima-luke-masaba-59060a121)
 
 
-## Online View
 
-[Here](  https://lucas-masaba.github.io/to_do_list/) is a link to the online view of my website
 
 ## Show your support
 
