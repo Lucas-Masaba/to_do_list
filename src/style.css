@@ -1,3 +1,50 @@
 body {
-  background-color: bisque;
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  border: none;
+  box-shadow: 1px 1px 10px 1px #666;
+  left: 25%;
+  right: 25%;
+  position: absolute;
+  top: 10%;
+}
+
+.to_do_heading {
+  padding-left: 2%;
+}
+
+.task_input {
+  border: none;
+  padding-left: 2%;
+  font-size: 101%;
+  outline: none;
+}
+
+.task_input::placeholder {
+  font-style: italic;
+}
+
+.checkbox_style {
+  padding-left: 2%;
+}
+
+.tasks_class {
+  list-style-type: none;
+  padding-left: 0%;
+  margin-bottom: 0%;
+}
+
+.clear {
+  text-align: center;
+  padding: 2%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  background: rgb(223, 218, 218);
+}
+
+.clear:hover {
+  cursor: pointer;
+  padding-bottom: -10%;
 }
