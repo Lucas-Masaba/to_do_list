@@ -6,12 +6,12 @@ const tasksToDo = [
   {
     id: '0',
     description: 'wash the dishes',
-    completed: 'bool',
+    completed: 'false',
   },
   {
     id: '1',
     description: 'complete To Do list project',
-    completed: 'bool',
+    completed: 'false',
   },
 ];
 
