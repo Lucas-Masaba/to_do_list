@@ -136,7 +136,29 @@ eval("\r\n\r\n/* istanbul ignore next  */\r\nfunction styleTagTransform(css, sty
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* eslint-disable no-unused-vars, no-undef, no-return-assign */\n\n\n\nconst tasksToDo = [\n  {\n    id: '0',\n    description: 'wash the dishes',\n    completed: 'false',\n  },\n  {\n    id: '1',\n    description: 'complete To Do list project',\n    completed: 'false',\n  },\n];\n\nconst taskCollection = () => {\n  const taskUL = document.getElementById('tasks_id');\n\n  tasksToDo.forEach((task) => {\n    taskUL.insertAdjacentHTML('beforeend', ` <li class=\"task_list\">\n                        <input type=\"checkbox\" class=\"checkbox_style\" id=\"${task.id}\"  name=\"${task.description}\">\n                        <label for=\"${task.description}\">${task.description}</label><hr>\n                       </li>`);\n  });\n};\ndocument.addEventListener('DOMContentLoaded', () => {\n  taskCollection();\n});\n\n//# sourceURL=webpack://webpack_project/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _js_modules_taskcoomplete_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js_modules/taskcoomplete.js */ \"./src/js_modules/taskcoomplete.js\");\n/* harmony import */ var _js_modules_storage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js_modules/storage.js */ \"./src/js_modules/storage.js\");\n\n\n\n\n\n\nconst tasksToDo = [\n  {\n    id: 0,\n    description: 'wash the dishes',\n    completed: false,\n  },\n  {\n    id: 1,\n    description: 'complete To Do list project',\n    completed: false,\n  },\n];\n\nconst taskCollection = () => {\n  const taskUL = document.getElementById('tasks_id');\n\n  tasksToDo.forEach((task) => {\n    taskUL.insertAdjacentHTML('beforeend', ` <li class=\"task_list\">\n                        <input type=\"checkbox\" class=\"checkbox_style\" id=\"${task.id}\"  name=\"${task.description}\">\n                        <label class=\"checkbox_label some\" for=\"${task.description}\">${task.description}</label><hr>\n                       </li>`);\n                       \n  });\n};\ndocument.addEventListener('DOMContentLoaded', () => {\n  taskCollection();\n  const eachCheckbox = document.querySelectorAll('checkbox_style')\n  eachCheckbox.forEach((element) => {\n    element.addEventListener('change', (e) => {\n    _js_modules_storage_js__WEBPACK_IMPORTED_MODULE_3__.Storage.storageTask(tasksToDo);\n    \n    (0,_js_modules_taskcoomplete_js__WEBPACK_IMPORTED_MODULE_2__.validate)(e.target, tasksToDo);    \n  })})\n  \n});\n\n//# sourceURL=webpack://webpack_project/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/js_modules/storage.js":
+/*!***********************************!*\
+  !*** ./src/js_modules/storage.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Storage\": () => (/* binding */ Storage)\n/* harmony export */ });\nclass Storage  {\r\n   static storageTask(toDoTasks) {\r\n    if (localStorage.length === 0) {\r\n      \r\n      localStorage.setItem('tasks', JSON.stringify(toDoTasks))\r\n    } else {\r\n      \r\n      const storedTask = JSON.parse(localStorage.getItem('tasks'))\r\n      return storedTask;\r\n    }\r\n  }\r\n  static storageCheckBox(checkBox) {\r\n    const checkBoxValue = checkBox.checked;\r\n    if (localStorage.length === 0 || checkBoxValue === true) {\r\n      localStorage.setItem('checks', (checkBox))\r\n      \r\n    }\r\n    else {\r\n      const storedCheck = (localStorage.getItem('checks'))\r\n      \r\n      return storedCheck;\r\n    }\r\n  }\r\n}\n\n//# sourceURL=webpack://webpack_project/./src/js_modules/storage.js?");
+
+/***/ }),
+
+/***/ "./src/js_modules/taskcoomplete.js":
+/*!*****************************************!*\
+  !*** ./src/js_modules/taskcoomplete.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"validate\": () => (/* binding */ validate)\n/* harmony export */ });\n// verify if checked\r\nconst validate = (checkbox, tasksToDo) => {\r\n  const box = document.querySelectorAll('#done');\r\n  const status = tasksToDo[checkbox.id];\r\n  if(!status.completed){\r\n    status.completed = true;\r\n  } else {\r\n    status.completed = false;\r\n  }\r\n  return {validate}\r\n}\n\n//# sourceURL=webpack://webpack_project/./src/js_modules/taskcoomplete.js?");
 
 /***/ })
 

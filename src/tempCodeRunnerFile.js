@@ -1,0 +1,1 @@
+Storage.storageCheckBox(e.target);
