@@ -7,12 +7,12 @@ import { Storage } from './modules/storage';
   {
     id: '0',
     description: 'wash the dishes',
-    completed: 'false',
+    completed: false,
   },
   {
     id: '1',
     description: 'complete To Do list project',
-    completed: 'false',
+    completed: false,
   },
 ];
 if (localStorage.length == 0) {
