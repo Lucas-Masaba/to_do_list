@@ -1,15 +1,27 @@
 export default class Storage {
-  static setTask(theTasks) {
-    localStorage.setItem('tasks', JSON.stringify(theTasks));
+  static get allTasks() {
+    const tasksToDo = [
+      {
+        id: 0,
+        description: 'wash the dishes',
+        completed: false,
+      },
+      {
+        id: 1,
+        description: 'complete To Do list project',
+        completed: false,
+      },
+    ];
+    if (localStorage.getItem('myTasks')) {
+      return JSON.parse(localStorage.getItem('myTasks'));
+    }
+    localStorage.setItem('myTasks', JSON.stringify(tasksToDo));
+    return tasksToDo;
   }
 
-  static getTask(theTasks) {
-    return JSON.parse(localStorage.getItem(theTasks));
-  }
-  static setCheckTask(tasks) {
-    localStorage.setItem("checkbox1", JSON.stringify(tasks.checked))
-  }
-  static getCheckTask(tasks){
-    return JSON.parse(localStorage.getItem("checkbox1"))
+  static updateData(status, index) {
+    const { allTasks: storedData } = Storage;
+    storedData[Number(index)].completed = status;
+    localStorage.setItem('myTasks', JSON.stringify(storedData));
   }
 }

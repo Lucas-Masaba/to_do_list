@@ -1,11 +1,12 @@
-export default class StatusReport {
-  static statusUpdate(checkbox, tasks) {
-    const status = tasks[checkbox.id];
-    if (status.completed) {
-      status.completed = false;
-    } else {
-      status.completed = true;
+import Storage from './storage.js';
+
+export default class Handler {
+  static handleChangeInCheckbox(e) {
+    if (e.target.tagName === 'INPUT') {
+      const { updateData } = Storage;
+      const status = e.target.checked;
+      const index = e.target.getAttribute('data-id');
+      updateData(status, index);
     }
-    return this.statusUpdate;
   }
 }
