@@ -2,13 +2,14 @@
 
 > To Do List
 
-
+![screenshot](./pics/screenshot.png)
 
 ## Built With
 
 - HTML
 - Javascript
 - CSS
+- Web-Pack
 
 ## Getting Started
 
@@ -34,7 +35,9 @@ git clonehttps://github.com/Lucas-Masaba/to_do_list.git
 - Twitter: [@twitterhandle](https://twitter.com/MasabaLuke)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/khusiima-luke-masaba-59060a121)
 
+## Online View
 
+[Here](https://lucas-masaba.github.io/to_do_list/dist) is a link to the online view of my website
 
 
 ## Show your support
