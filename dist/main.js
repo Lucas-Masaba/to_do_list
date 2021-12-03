@@ -136,7 +136,39 @@ eval("\r\n\r\n/* istanbul ignore next  */\r\nfunction styleTagTransform(css, sty
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* eslint-disable no-unused-vars, no-undef, no-return-assign */\n\n\n\nconst tasksToDo = [\n  {\n    id: '0',\n    description: 'wash the dishes',\n    completed: 'false',\n  },\n  {\n    id: '1',\n    description: 'complete To Do list project',\n    completed: 'false',\n  },\n];\n\nconst taskCollection = () => {\n  const taskUL = document.getElementById('tasks_id');\n\n  tasksToDo.forEach((task) => {\n    taskUL.insertAdjacentHTML('beforeend', ` <li class=\"task_list\">\n                        <input type=\"checkbox\" class=\"checkbox_style\" id=\"${task.id}\"  name=\"${task.description}\">\n                        <label for=\"${task.description}\">${task.description}</label><hr>\n                       </li>`);\n  });\n};\ndocument.addEventListener('DOMContentLoaded', () => {\n  taskCollection();\n});\n\n//# sourceURL=webpack://webpack_project/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_storage_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/storage.js */ \"./src/modules/storage.js\");\n/* harmony import */ var _modules_complete_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/complete.js */ \"./src/modules/complete.js\");\n/* harmony import */ var _modules_ui_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/ui.js */ \"./src/modules/ui.js\");\n/* harmony import */ var _modules_ui_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_modules_ui_js__WEBPACK_IMPORTED_MODULE_4__);\n/* eslint-disable no-unused-vars, no-undef, no-return-assign */\n\n\n\n\n\n\n\nconst tasksToDo = [\n  {\n    id: 0,\n    description: 'wash the dishes',\n    completed: false,\n  },\n  {\n    id: 1,\n    description: 'complete To Do list project',\n    completed: false,\n  },\n];\n\nconst doneCheck = document.querySelectorAll('.checkbox_style')\n\nif (localStorage.length === 0) {\n  _modules_storage_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"].setTask(tasksToDo);\n  _modules_storage_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"].setCheckTask(doneCheck);\n} else {\n  _modules_storage_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getTask(tasksToDo);\n  _modules_storage_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getCheckTask(doneCheck);\n}\n\nconst taskCollection = () => {\n  const taskUL = document.getElementById('tasks_id');\n\n  tasksToDo.forEach((task) => {\n    taskUL.insertAdjacentHTML('beforeend', ` <li class=\"task_list\">\n                        <input type=\"checkbox\" class=\"checkbox_style\" id=\"${task.id}\"  name=\"${task.description}\" ${\n                          task.completed ? 'checked' : ''\n                        }>\n                        <label for=\"${task.description}\">${task.description}</label><hr>\n                       </li>`);\n  });\n};\ndocument.addEventListener('DOMContentLoaded', () => {\n  taskCollection();\n  const checkBoxes = document.querySelectorAll('.checkbox_style');\n  \n  checkBoxes.forEach((checkBox) => {\n    checkBox.addEventListener('change', (e) => {\n    _modules_storage_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"].setTask(tasksToDo);\n    _modules_storage_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"].setCheckTask(checkBox)\n    _modules_complete_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"].statusUpdate(e.target, tasksToDo);\n    _modules_ui_js__WEBPACK_IMPORTED_MODULE_4___default().updateStatus(e.target);\n  })\n  });\n  _modules_ui_js__WEBPACK_IMPORTED_MODULE_4___default().checkStatus(tasksToDo, checkBoxes)\n});\n\n\n//# sourceURL=webpack://webpack_project/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/complete.js":
+/*!*********************************!*\
+  !*** ./src/modules/complete.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ StatusReport)\n/* harmony export */ });\nclass StatusReport {\n  static statusUpdate(checkbox, tasks) {\n    const status = tasks[checkbox.id];\n    if (status.completed) {\n      status.completed = false;\n    } else {\n      status.completed = true;\n    }\n    return this.statusUpdate;\n  }\n}\n\n//# sourceURL=webpack://webpack_project/./src/modules/complete.js?");
+
+/***/ }),
+
+/***/ "./src/modules/storage.js":
+/*!********************************!*\
+  !*** ./src/modules/storage.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Storage)\n/* harmony export */ });\nclass Storage {\n  static setTask(theTasks) {\n    localStorage.setItem('tasks', JSON.stringify(theTasks));\n  }\n\n  static getTask(theTasks) {\n    return JSON.parse(localStorage.getItem(theTasks));\n  }\n  static setCheckTask(tasks) {\n    localStorage.setItem(\"checkbox1\", tasks.checked)\n  }\n  static getCheckTask(tasks){\n    return localStorage.getItem(\"checkbox1\")\n  }\n}\n\n//# sourceURL=webpack://webpack_project/./src/modules/storage.js?");
+
+/***/ }),
+
+/***/ "./src/modules/ui.js":
+/*!***************************!*\
+  !*** ./src/modules/ui.js ***!
+  \***************************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://webpack_project/./src/modules/ui.js?");
 
 /***/ })
 
