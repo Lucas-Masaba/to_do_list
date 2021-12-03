@@ -20,5 +20,5 @@ const taskCollection = () => {
 document.addEventListener('DOMContentLoaded', () => {
   taskCollection();
   const checkBoxes = document.querySelectorAll('.checkbox_style');
-  checkBoxes.forEach((checkBox) => checkBox.addEventListener(('click'), (e) => handleChangeInCheckbox(e)));
+  checkBoxes.forEach((checkBox) => checkBox.addEventListener(('change'), (e) => handleChangeInCheckbox(e)));
 });
