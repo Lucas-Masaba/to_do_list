@@ -25,6 +25,7 @@ export default class Storage {
   static updateData(status, index) {
     const { allTasks: storedData } = Storage;
     storedData[Number(index)].completed = status;
+    console.log(status)
     localStorage.setItem('myTasks', JSON.stringify(storedData));
   }
 }
