@@ -26,6 +26,57 @@ main {
   font-style: italic;
 }
 
+.input_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#add_button {
+  border: none;
+  border-radius: 20px;
+  margin-right: 3%;
+  background: none;
+}
+#add_button:hover {
+  cursor: pointer;
+  background-color: rgb(54, 235, 54);
+}
+#add_icon {
+  font-size: 200%;
+  font-weight: bold;
+  color: rgb(54, 235, 54);
+}
+#add_icon:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.remove_button_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#remove_button {
+  border: none;
+  border-radius: 20px;
+  margin-right: 3%;
+  background: none;
+  
+}
+#remove_button:hover {
+  cursor: pointer;
+  background-color: rgb(235, 10, 10);
+}
+#remove_icon {
+  font-size: 200%;
+  font-weight: bold;
+  color: rgb(235, 10, 10);
+}
+#remove_icon:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
 .checkbox_style {
   padding-left: 2%;
 }
@@ -46,5 +97,5 @@ main {
 
 .clear:hover {
   cursor: pointer;
-  padding-bottom: -10%;
+  font-size: 120%;
 }

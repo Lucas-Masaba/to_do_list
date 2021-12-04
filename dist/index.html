@@ -11,16 +11,22 @@
 <body>
   <main>
     <section class="to_do_section">
-      <h1 class="to_do_heading">Today's To Do</h1><hr>
-      <input class="task_input" type="text" placeholder="Add to your list..."><hr>
+      <h1 class="to_do_heading">Today's To Do</h1>
+      <hr>
+      <div class="input_container">
+        <input id="input_your_task" class="task_input" type="text" placeholder="Add to your list...">
+        <button id="add_button" type="button"><span id="add_icon">&plus;</span></button>
+        
+      </div>
+    <hr>
       <ul class="tasks_class" id="tasks_id">
-       
+
       </ul>
       <p class="clear">Clear all completed</p>
       <p id="demo"></p>
     </section>
   </main>
-  
+
 </body>
 
 </html>

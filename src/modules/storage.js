@@ -1,4 +1,7 @@
 export default class Storage {
+  static create(description, index, completed) {
+    return { description, index, completed }
+  }
   static get allTasks() {
     const tasksToDo = [
       {

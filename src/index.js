@@ -3,8 +3,8 @@ import _ from 'lodash';
 import './style.css';
 import Storage from './modules/storage.js';
 import Handler from './modules/complete.js';
-
-const { handleChangeInCheckbox } = Handler;
+import UI from './modules/add_remove.js';
+const { handleChangeInCheckbox,handleAddtask } = Handler;
 const { allTasks: tasksToDo } = Storage;
 
 const taskCollection = () => {
@@ -12,8 +12,15 @@ const taskCollection = () => {
 
   tasksToDo.forEach((task) => {
     taskUL.insertAdjacentHTML('beforeend', ` <li class="task_list">
+                        <div class="remove_button_container">
+                        <div>
                         <input type="checkbox" class="checkbox_style" data-id=${task.id}  name="${task.description}" ${task.completed ? 'checked' : ''}>
-                        <label for="${task.description}">${task.description}</label><hr>
+                        
+                        <label for="${task.description}">${task.description}</label>
+                        </div>
+                        <button id="remove_button" type="button"><span id="remove_icon">&times;</span></button>
+                        </div>
+                        <hr>
                        </li>`);
   });
 };
@@ -21,4 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   taskCollection();
   const checkBoxes = document.querySelectorAll('.checkbox_style');
   checkBoxes.forEach((checkBox) => checkBox.addEventListener(('change'), (e) => handleChangeInCheckbox(e)));
+  const addButton = document.getElementById('add_button')
+  const currentIndex = document.querySelectorAll('.task_list').length + 1;
+  addButton.addEventListener('click', (e) => handleAddtask(e, currentIndex, false))
 });
