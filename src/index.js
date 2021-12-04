@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 import './style.css';
 import Data from './data.js';
 import Handlers from './handlers.js';
 
 const { allTasks: tasks } = Data;
 const {
-  handleCheckBoxChange, handleAddTask, removeTask, clearCompleted, createUpdateHandle, updateTask,
+  handleCheckBoxChange, handleAddTask, removeTask, clearCompleted, createUpdateHandle,
 } = Handlers;
 
 const appHeader = `
