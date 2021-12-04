@@ -2,7 +2,7 @@
 
 > To Do List
 
-![screenshot](./src/pics/screenshot.png)
+![screenshot](/screenshot.png)
 
 ## Built With
 
