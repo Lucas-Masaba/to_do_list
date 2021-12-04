@@ -1,101 +1,95 @@
-body {
-  font-family: 'Poppins', sans-serif;
+#minimalist {
+  border-top: 1.5px solid #f1f1f1;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 80%;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 0;
+  box-shadow: 1px 4px 2px 3px #f1f1f1;
 }
 
-main {
+#minimalist li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding: 10px;
+  border-bottom: solid 1.5px #f1f1f1;
+}
+
+#minimalist li label {
+  width: 85%;
+}
+
+#minimalist input[type=text] {
+  font-family: cursive;
   border: none;
-  box-shadow: 1px 1px 10px 1px #666;
-  left: 25%;
-  right: 25%;
-  position: absolute;
-  top: 10%;
-}
-
-.to_do_heading {
-  padding-left: 2%;
-}
-
-.task_input {
-  border: none;
-  padding-left: 2%;
-  font-size: 101%;
+  width: 95%;
   outline: none;
 }
 
-.task_input::placeholder {
-  font-style: italic;
-}
-
-.input_container {
-  display: flex;
-  justify-content: space-between;
-}
-
-#add_button {
-  border: none;
-  border-radius: 20px;
-  margin-right: 3%;
-  background: none;
-}
-#add_button:hover {
-  cursor: pointer;
-  background-color: rgb(54, 235, 54);
-}
-#add_icon {
-  font-size: 200%;
-  font-weight: bold;
-  color: rgb(54, 235, 54);
-}
-#add_icon:hover {
-  cursor: pointer;
-  color: #fff;
-}
-
-.remove_button_container {
-  display: flex;
-  justify-content: space-between;
-}
-
-#remove_button {
-  border: none;
-  border-radius: 20px;
-  margin-right: 3%;
-  background: none;
-  
-}
-#remove_button:hover {
-  cursor: pointer;
-  background-color: rgb(235, 10, 10);
-}
-#remove_icon {
-  font-size: 200%;
-  font-weight: bold;
-  color: rgb(235, 10, 10);
-}
-#remove_icon:hover {
-  cursor: pointer;
-  color: #fff;
-}
-
-.checkbox_style {
-  padding-left: 2%;
-}
-
-.tasks_class {
-  list-style-type: none;
-  padding-left: 0%;
-  margin-bottom: 0%;
-}
-
-.clear {
+.save-task {
+  color: #000;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
   text-align: center;
-  padding: 2%;
-  margin-top: 0%;
-  margin-bottom: 0%;
-  background: rgb(223, 218, 218);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.clear:hover {
+.save-task:hover {
+  color: #fff;
+  background-color: green;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  display: inline-block;
   cursor: pointer;
-  font-size: 120%;
+}
+
+#minimalist li p {
+  padding: 0;
+  margin: 0;
+}
+
+.appHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.appHeader h1 {
+  padding: 0;
+  margin: 0;
+  font-size: medium;
+}
+
+.drag-around {
+  cursor: all-scroll;
+}
+
+#clear-all div {
+  color: #666;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+}
+
+.remove-item {
+  font-size: small;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 3px;
+  color: #fcc;
+  background-color: brown;
+  cursor: pointer;
 }

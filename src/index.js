@@ -1,37 +1,71 @@
 /* eslint-disable no-unused-vars */
-import _ from 'lodash';
 import './style.css';
-import Storage from './modules/storage.js';
-import Handler from './modules/complete.js';
+import Data from './data.js';
+import Handlers from './handlers.js';
 
-const { handleChangeInCheckbox, handleAddtask } = Handler;
-const { allTasks: tasksToDo } = Storage;
+const { allTasks: tasks } = Data;
+const {
+  handleCheckBoxChange, handleAddTask, removeTask, clearCompleted, createUpdateHandle, updateTask,
+} = Handlers;
 
-const taskCollection = () => {
-  const taskUL = document.getElementById('tasks_id');
+const appHeader = `
+<li class="appHeader">
+    <h1>Today's To Do</h1>
+    <span>&#8634</span>
+</li>`;
 
-  tasksToDo.forEach((task) => {
-    taskUL.insertAdjacentHTML('beforeend', ` <li class="task_list">
-                        <div class="remove_button_container">
-                        <div>
-                        
-                        <input type="checkbox" class="checkbox_style" data-id=${task.id}  name="${task.description}" ${task.completed ? 'checked' : ''}>
-                        <label for="${task.description}">${task.description}</label>
-                        
-                        </div>
-                        <button id="remove_button" type="button"><span id="remove_icon">&times;</span></button>
-                        </div>
-                        <hr>
-                       </li>`);
-  });
-};
+const input = `
+<li>
+    
+    <input type="text" id="task-description" name="description" placeholder="Add to your list...">
+     
+    <span class="save-task">&crarr;</span>
+</li>
+`;
+
+const todoList = tasks
+  .map((task, index) => `
+    <li class="task-item"> 
+        <p>
+            <span>
+                  <label for="task list"> 
+                  <input class="status" data-index="${index}" type="checkbox"${task.completed ? 'checked' : ''} />
+                     <span  class="description"> ${task.description}  </span>
+                  </label>
+            </span>
+            
+        </p>
+        <p>
+          <i data-index="${index}" class="remove-item">&times</i>
+          <span class="drag-around">&#8942</span>
+        </p>
+    </li>
+`);
+
+const footer = `
+<li id="clear-all">
+    <div>
+        Clear all completed
+    </div>
+</li>
+`;
+
+const minimalist = document.getElementById('minimalist');
+minimalist.innerHTML = `
+    ${appHeader}
+    ${input}
+    ${todoList.join('')}
+    ${footer}
+`;
+
 document.addEventListener('DOMContentLoaded', () => {
-  taskCollection();
-  const checkBoxes = document.querySelectorAll('.checkbox_style');
-  checkBoxes.forEach((checkBox) => checkBox.addEventListener(('change'), (e) => handleChangeInCheckbox(e)));
-  
-  const addButton = document.getElementById('add_button')
-  const currentIndex = document.querySelectorAll('.task_list').length + 1;
-  const e = document.getElementById('input_your_task');
-  addButton.addEventListener('click', () => handleAddtask(e, currentIndex, false))
+  minimalist.addEventListener('change', (e) => handleCheckBoxChange(e));
+  minimalist.addEventListener('click', (e) => removeTask(e));
+  minimalist.addEventListener('click', (e) => createUpdateHandle(e));
+
+  const saveTaskButton = document.querySelector('.save-task');
+  saveTaskButton.addEventListener('click', (e) => handleAddTask(e, false));
+
+  const clearAll = document.getElementById('clear-all');
+  clearAll.addEventListener('click', () => clearCompleted());
 });
