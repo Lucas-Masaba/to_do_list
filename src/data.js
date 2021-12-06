@@ -4,11 +4,7 @@ class Data {
   }
 
   static get allTasks() {
-    if (localStorage.getItem('mytodoTasks')) {
-      return JSON.parse(localStorage.getItem('mytodoTasks'));
-    }
-    localStorage.setItem('mytodoTasks', JSON.stringify([]));
-    return [];
+    return JSON.parse(localStorage.getItem('mytodoTasks')) || [];
   }
 
   static updateData(status, index) {
@@ -16,6 +12,10 @@ class Data {
     storedData[Number(index)].completed = status;
 
     localStorage.setItem('mytodoTasks', JSON.stringify(storedData));
+  }
+
+  static resetData(data) {
+    localStorage.setItem('mytodoTasks', JSON.stringify(data));
   }
 }
 
