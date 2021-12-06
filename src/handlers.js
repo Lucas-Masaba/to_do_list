@@ -21,8 +21,6 @@ class Handlers {
 
     const afterAddNew = [...allTasks, newTask];
 
-    // afterAddNew.forEach((item, index) => { item.index = index; });
-
     const { appendTask } = Handlers;
     appendTask(newTask);
 
