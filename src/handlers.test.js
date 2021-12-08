@@ -17,4 +17,27 @@ describe('Test for remove item', () => {
     ];
     expect(Handlers.removeTask(0, allTasks)).toHaveLength(1);
   })
+
+  test('item is removed from the array in the DOM', () => {
+    document.body.innerHTML = `
+    <ul>
+      <button id="clear-all">Clear all</button>
+    </ul>`;
+    const allTasks = [
+      { 
+        description: 'Task 1', 
+        index: 0,
+        completed: false,
+      },
+      { 
+        description: 'Task 2', 
+        index: 1,
+        completed: true,
+      },
+    ];
+    Handlers.renderList(allTasks);
+    Handlers.removeTask(0, allTasks)
+    const lis = document.querySelectorAll('.task-item');
+    expect([...lis]).toHaveLength(1);
+  })
 })
