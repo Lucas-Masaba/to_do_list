@@ -6,9 +6,3 @@ describe('Test for Add item', () => {
       expect(data).toBeInstanceOf(Object);
   })
 })
-
-describe('Test for Delete item', () => {
-  test('Add a test', () => {
-    expect('string').toMatch('string');
-  })
-})
