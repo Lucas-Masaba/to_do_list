@@ -35,6 +35,13 @@ git clonehttps://github.com/Lucas-Masaba/to_do_list.git
 - Twitter: [@twitterhandle](https://twitter.com/MasabaLuke)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/khusiima-luke-masaba-59060a121)
 
+
+👤 **Juan Paulo Pérez Tejada (Test)**
+
+- GitHub: [@Maclenn77](https://github.com/Maclenn77)
+- Twitter: [@SrJuanPapas](https://twitter.com/SrJuanPapas)
+- LinkedIn: [Juan Paulo Péreztejada](https://linkedin.com/in/juanpaulopereztejada)
+
 ## Online View
 
 [Here](https://lucas-masaba.github.io/to_do_list/dist) is a link to the online view of my website
