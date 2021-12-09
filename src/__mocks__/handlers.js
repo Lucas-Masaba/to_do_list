@@ -81,4 +81,24 @@ export default class Handlers {
     const clearAll = document.getElementById('clear-all');
     clearAll.insertAdjacentHTML('beforebegin', listItem);
   }
+s
+  static handleUpdate(index, newDescription) {
+    const input = [...document.querySelectorAll('input[data-index]')].find(input => parseInt(input.dataset.index, 10) === index)
+    const initialText = input.nextElementSibling.textContent;
+    input.nextElementSibling.innerHTML = `
+      <p>
+          <input type="text" placeholder="${initialText}"/> <br/>
+          <button class="update">Update</button>  
+          <button  data-initialtext="${initialText}" class="cancel">Cancel</button>
+      </p>
+      `;
+    const { allTasks, resetData } = Data;
+
+    if (newDescription.length > 2) {
+      allTasks[index].description = newDescription;
+
+      resetData(allTasks);
+      input.nextElementSibling.textContent = newDescription;
+    }
+  }
 }
