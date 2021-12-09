@@ -32,9 +32,7 @@ beforeEach(() => {
       completed: false,
     },
   ];
-})
-
-
+});
 
 describe('Test for remove item', () => {
   test('item is removed from the array', () => {
@@ -61,9 +59,9 @@ describe('test edit description of item', () => {
   beforeEach(() => {
     Data.resetData(allTasks);
     Handlers.renderList(allTasks);
-    Handlers.handleUpdate(0,'new task description')
-  })
-  
+    Handlers.handleUpdate(0, 'new task description');
+  });
+
   test('test edit description', () => {
     expect(Data.allTasks[0].description).toBe('new task description');
   });
@@ -77,30 +75,35 @@ describe('test edit description of item', () => {
 describe('test update completed task', () => {
   beforeEach(() => {
     Data.resetData(allTasks);
-  })
+  });
 
   test('test a task change completed value to true ', () => {
-    Handlers.handleCheckBoxChange(true, allTasks[0].index)
+    Handlers.handleCheckBoxChange(true, allTasks[0].index);
     expect(Data.allTasks[0].completed).toBeTruthy();
-  })
+  });
 
   test('test a task change completed value to false ', () => {
-    Handlers.handleCheckBoxChange(false, allTasks[1].index)
+    Handlers.handleCheckBoxChange(false, allTasks[1].index);
     expect(Data.allTasks[1].completed).toBeFalsy();
-  })
-})
+  });
+});
 
 describe('test that completed tasks are cleared', () => {
+  beforeEach(() => {
+    Data.resetData(allTasks);
+    Handlers.renderList(allTasks);
+    Handlers.clearCompleted();
+  });
   test('items is removed from the array', () => {
-    expect(Data.allTasks).toHaveLength(2)
-  })
+    expect(Data.allTasks).toHaveLength(2);
+  });
 
   test('items is removed from the array in the DOM', () => {
     const lis = document.querySelectorAll('.task-item');
     expect([...lis]).toHaveLength(2);
-  })
+  });
 
   test('index is in order', () => {
     expect(Data.allTasks[1].index).toBe(1);
-  })
-})
+  });
+});

@@ -86,24 +86,41 @@ export default class Handlers {
     const clearAll = document.getElementById('clear-all');
     clearAll.insertAdjacentHTML('beforebegin', listItem);
   }
+
 s
-  static handleUpdate(index, newDescription) {
-    const input = [...document.querySelectorAll('input[data-index]')].find(input => parseInt(input.dataset.index, 10) === index)
-    const initialText = input.nextElementSibling.textContent;
-    input.nextElementSibling.innerHTML = `
+
+static handleUpdate(index, newDescription) {
+  const input = [...document.querySelectorAll('input[data-index]')].find((input) => parseInt(input.dataset.index, 10) === index);
+  const initialText = input.nextElementSibling.textContent;
+  input.nextElementSibling.innerHTML = `
       <p>
           <input type="text" placeholder="${initialText}"/> <br/>
           <button class="update">Update</button>  
           <button  data-initialtext="${initialText}" class="cancel">Cancel</button>
       </p>
       `;
-    const { allTasks, resetData } = Data;
+  const { allTasks, resetData } = Data;
 
-    if (newDescription.length > 2) {
-      allTasks[index].description = newDescription;
+  if (newDescription.length > 2) {
+    allTasks[index].description = newDescription;
 
-      resetData(allTasks);
-      input.nextElementSibling.textContent = newDescription;
-    }
+    resetData(allTasks);
+    input.nextElementSibling.textContent = newDescription;
   }
+}
+
+static clearCompleted() {
+  const { allTasks, resetData } = Data;
+  const afterRemovedCompleted = allTasks.filter((task) => task.completed !== true);
+
+  afterRemovedCompleted.forEach((item, index) => { item.index = index; });
+
+  resetData(afterRemovedCompleted);
+
+  const existingLists = document.querySelectorAll('.task-item');
+  existingLists.forEach((item) => item.remove());
+
+  const { renderList } = Handlers;
+  renderList(afterRemovedCompleted);
+}
 }
