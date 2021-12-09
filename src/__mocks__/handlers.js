@@ -1,6 +1,11 @@
 import Data from '../data.js';
 
 export default class Handlers {
+  static handleCheckBoxChange(status, index) {
+    const { updateData } = Data;
+    updateData(status, index);
+  }
+
   static removeTask(index, allTasks) {
     allTasks.splice(index, 1);
     allTasks.forEach((item, index) => {
