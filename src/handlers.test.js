@@ -3,29 +3,32 @@ import Data from './data.js';
 
 jest.mock('./handlers');
 
+let allTasks = [];
+
 beforeEach(() => {
   document.body.innerHTML = `
   <ul>
     <button id="clear-all">Clear all</button>
   </ul>`; 
+  
+  allTasks = [
+    {
+      description: 'Task 1',
+      index: 0,
+      completed: false,
+    },
+    {
+      description: 'Task 2',
+      index: 1,
+      completed: true,
+    },
+  ];
 })
 
-const allTasks = [
-  {
-    description: 'Task 1',
-    index: 0,
-    completed: false,
-  },
-  {
-    description: 'Task 2',
-    index: 1,
-    completed: true,
-  },
-];
+
 
 describe('Test for remove item', () => {
   test('item is removed from the array', () => {
-
     expect(Handlers.removeTask(0, allTasks)).toHaveLength(1);
   });
 
